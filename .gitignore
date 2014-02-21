@@ -213,5 +213,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-Warp/Temp/UnityLockfile
+Warp/Temp
 Warp/Library/FailedAssetImports.txt
+Warp/Library/ScriptAssemblies/CompilationCompleted.txt
