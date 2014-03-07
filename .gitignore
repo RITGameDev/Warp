@@ -216,3 +216,4 @@ pip-log.txt
 Warp/Temp
 Warp/Library/FailedAssetImports.txt
 Warp/Library/ScriptAssemblies/CompilationCompleted.txt
+Warp/Export/*

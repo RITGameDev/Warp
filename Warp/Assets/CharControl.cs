@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class CharControl : MonoBehaviour {
+
     [Range(0.1f, 30f)]
     public float CharSpeed = 1f;
 
@@ -15,6 +16,7 @@ public class CharControl : MonoBehaviour {
 
     public GameObject Bullet;
     public Transform BulletSpawn;
+
     [Range(0.1f, 10f)]
     public float ShootCooldownLength = 4f;
     private float ShootCooldown = 0f;
@@ -27,7 +29,9 @@ public class CharControl : MonoBehaviour {
 	void FixedUpdate() {
         grounded = Physics2D.OverlapCircle(GroundCheck.position, GroundRadius, WhatIsGround);
 
-		transform.Translate(new Vector3(Input.GetAxis("Horizontal") * CharSpeed,0,0));
+        if(grounded) {
+            rigidbody2D.AddForce(new Vector2(Input.GetAxis("Horizontal") * CharSpeed, 0));
+        }
 	}
 	
 	// Update is called once per frame
