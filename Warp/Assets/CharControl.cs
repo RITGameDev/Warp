@@ -48,5 +48,14 @@ public class CharControl : MonoBehaviour {
         if(ShootCooldown > 0f) {
             ShootCooldown = Mathf.Max(0f, ShootCooldown - Time.deltaTime);
         }
+		
+		if(Input.GetButtonDown("Special")) {
+			TeleportForward(10);
+		}
+	}
+	
+	void TeleportForward(float distance) {
+		Transform teleportNode = (Transform)GameObject.Instantiate(GameObject.Find("GameManager").GetComponent<GameManager>().TeleportNodePairPrefab, transform.position, Quaternion.identity);
+		teleportNode.GetComponentInChildren<Node>().transform.position = new Vector3(distance, 0, 0);
 	}
 }

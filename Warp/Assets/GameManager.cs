@@ -5,4 +5,6 @@ public class GameManager : MonoBehaviour {
     public bool dispMenu;
 
     public Transform SpawnPoint;
+	
+	public Transform TeleportNodePairPrefab;
 }
