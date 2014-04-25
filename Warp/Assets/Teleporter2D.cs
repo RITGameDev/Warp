@@ -1,44 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
-public class Teleporter2D : MonoBehaviour {
+public class Teleporter2D : MonoBehaviour
+{
 
-	public int timer;
-	public bool timing;
-	public Node targ;
-	//int timer= 0;
-	// Use this for initialization
-	void Start () {
-		timing = false;
-	}
+		public event Action OnTeleport;
 
-	void OnTriggerEnter2D(Collider2D other)
-	{
-		//if(true)//other.gameObject.tag == "Player")
-		//{
-		timer = 5;
-		timing = true;
-		//}
-	}
-
-	void  OnTriggerStay2D(Collider2D other)
-	{
-		if(timing)
+		public int timer;
+		public bool timing;
+		public Node targ;
+		//int timer= 0;
+		// Use this for initialization
+		void Start ()
 		{
-			if(timer==0)
-			{
-				timer=5;
-				other.gameObject.transform.position = targ.transform.position;
-			}
-			else timer--;
+				timing = false;
 		}
-	}
+
+		void OnTriggerEnter2D (Collider2D other)
+		{
+				//if(true)//other.gameObject.tag == "Player")
+				//{
+				timer = 5;
+				timing = true;
+				//}
+		}
+
+		void  OnTriggerStay2D (Collider2D other)
+		{
+				if (timing) {
+						if (timer == 0) {
+								timer = 5;
+								other.gameObject.transform.position = targ.transform.position;
+
+								if (OnTeleport != null) {
+										OnTeleport ();
+								}
+						} else
+								timer--;
+				}
+		}
 	
-	// Update is called once per frame
-	void Update () 
-	{
-		//if(timer<0)
-			/*float rot = gameObject.GetComponent<MouseLook>().rotChar;
+		// Update is called once per frame
+		void Update ()
+		{
+				//if(timer<0)
+				/*float rot = gameObject.GetComponent<MouseLook>().rotChar;
 			if(rot<0)
 			{
 				rot*=-1;
@@ -56,6 +63,6 @@ public class Teleporter2D : MonoBehaviour {
 		else
 		{
 			//gameObject.GetComponent<MouseLook>().rotChar = 0;*/
-		//}
-	}
+				//}
+		}
 }
