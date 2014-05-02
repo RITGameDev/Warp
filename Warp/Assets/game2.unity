@@ -671,6 +671,7 @@ MonoBehaviour:
   SpawnPoint: {fileID: 1569827518}
   TeleportNodePairPrefab: {fileID: 400000, guid: 08fb6d3a043d28d4b9a10182a72e4702,
     type: 2}
+  Portal: {fileID: 400000, guid: 06b616957d2048744a5df14cc40e71e9, type: 2}
 --- !u!4 &1093737723
 Transform:
   m_ObjectHideFlags: 0
